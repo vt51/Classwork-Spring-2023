@@ -8,7 +8,7 @@ This repository contains code for running a Patient Health Database.
 This is written in Python.
 
 ## Specifications
-The database will contain: :
+The database will contain:
 * Patient Name
 * Patient Age
 * Patient Bloodtype
