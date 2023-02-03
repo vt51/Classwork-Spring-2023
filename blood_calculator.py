@@ -99,4 +99,8 @@ def chol_output(chol_value, chol_analy):
 
 ##############################
 
-interface()
+if __name__ == "__main__": 
+	interface()
+
+
+
