@@ -24,8 +24,8 @@ def test_parse_weight_input(input, expected):
 
 
 @pytest.mark.parametrize("input, expected", [
-    (22.0, 9.97903),
-    (44.0, 19.9581),
+    (22.0, 22 / 2.20462),
+    (44.0, 44 / 2.20462),
 ])
 def test_convert_lb_to_kg(input, expected):
     from weight_entry import convert_lb_to_kg
