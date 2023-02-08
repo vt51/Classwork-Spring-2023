@@ -16,7 +16,7 @@ def parse_weight_input(weight_input):
     units = units.lower()
     if units[-1] == "s":
         units = units[0:-1]
-    if units in ["lb", "pound"]: 
+    if units in ["lb", "pound"]:
         weight_kg = convert_lb_to_kg(weight)
     elif units == "kg":
         weight_kg = weight
