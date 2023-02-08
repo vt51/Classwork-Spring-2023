@@ -30,4 +30,4 @@ def test_parse_weight_input(input, expected):
 def test_convert_lb_to_kg(input, expected):
     from weight_entry import convert_lb_to_kg
     answer = convert_lb_to_kg(input)
-    assert answer == expected
+    assert answer == pytest.approx(expected)
