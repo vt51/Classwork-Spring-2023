@@ -45,21 +45,42 @@ def set_up_window():
         rh = rh_factor_value.get()
         donation_center = donation_value.get()
         # send data to other functions that do the work (& are testable)
-        msg = check_and_upload_data(patient_name, id_number, blood_letter,
-                                    rh, donation_center)
-        # update the GUI
-        status_label.configure(text=msg)
+        # msg = check_and_upload_data(patient_name, id_number, blood_letter,
+        #                             rh, donation_center)
+        # # update the GUI
+        # status_label.configure(text=msg)
         # print("Patient name is {}".format(patient_name))
         # print("Patient id is {}".format(id_number))
         # print("Patient blood type is {}{}".format(blood_letter, rh))
         # donation_combobox["values"] = ("Atlanta", "Athens", "Peachtree")
+        # id_entry.configure(state=tk.DISABLED)
 
     def cancel_btn_cmd():
         root.destroy()
+        # id_entry.configure(state=tk.NORMAL)
 
     root = tk.Tk()
     root.title("Donor Database GUI")
     # root.geometry("600x200")
+
+    def change_label_color():
+        current_color = top_label.cget("foreground")
+        if current_color == "":
+            color = "black"
+        else:
+            color = current_color.string
+        if color == "black":
+            new_color = "red"
+        else:
+            new_color = "black"
+        top_label.configure(foreground=new_color)
+        root.after(1000, change_label_color)
+
+    def shuffle_choices():
+        current_choices = list(donation_combobox.cget("values"))
+        import random
+        random.shuffle(current_choices)
+        donation_combobox.configure(values=current_choices)
 
     top_label = ttk.Label(root, text="Blood Donor Database")
     top_label.grid(column=0, row=0, columnspan=2, sticky="W")
@@ -109,9 +130,12 @@ def set_up_window():
     donation_combobox.grid(column=2, row=1)
     donation_combobox["values"] = ("Durham", "Apex", "Raleigh")
     donation_combobox.state(["readonly"])
+    donation_combobox.configure(postcommand=shuffle_choices)
 
     status_label = ttk.Label(root, text="")
     status_label.grid(row=7, column=0, columnspan=10)
+
+    root.after(3000, change_label_color)
 
     root.mainloop()
 
